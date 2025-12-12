@@ -1,0 +1,19 @@
+h1{
+    font-family: var(--title-font-family);
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+h3{
+    font-family: var(--title-font-family);
+    font-size: bold;
+}
+a {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    // text-decoration: none;
+}
+li{
+    list-style: none;
+}

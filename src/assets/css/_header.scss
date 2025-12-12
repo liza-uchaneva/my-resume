@@ -1,0 +1,21 @@
+header{
+  
+}
+.name{
+  text-decoration: none;
+}
+.header__wrapper {
+  display: inline-grid;
+  grid-template-columns: 310px 250px 425px 1px;
+  gap: 10px;
+  font-size: var(--font-size-base);}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding: 0;
+  a{
+    font-family: var(--title-font-family);
+  }
+}

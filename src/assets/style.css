@@ -1,0 +1,36 @@
+@import './css/_global.scss';
+@import './css/_header.scss';
+@import './css/_about.scss';
+@import './css/_fonts.scss';
+@import './css/_common.scss';
+@import './css/_projects.scss';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--background-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  color: var(--text-color);
+}
+
+body {
+  display: grid;
+}
+
+#app {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding-top: var(--base-padding);
+  /* padding: var(--base-padding); */
+}
+
+
