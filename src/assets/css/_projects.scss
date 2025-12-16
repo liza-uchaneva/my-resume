@@ -1,11 +1,17 @@
-.projects{
-    display: flex;
-    
+@use "./mixins" as *;
+
+.projects { 
+    @include projects-grid(550px, 2rem); 
 }
-.project-wrap{
-    display: flex;
-    flex-direction: column;
+
+.project-wrap { 
+    @include flex-col(0.5rem); margin-top: 1rem; 
 }
-.project-img{
- max-width: 285px;
+
+.project-img {
+  @include cover-img(16/10);
+  @include img-hover-dim(0.9, 0.8);
+}
+.project-img:hover {
+  filter: brightness(0.9) saturate(0.8);
 }

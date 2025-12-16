@@ -1,7 +1,7 @@
 <template>
   <Header />
   <About />
-  <Projects />
+  <Projects :limit="3" :show="true" />
 </template>
 
 <script>

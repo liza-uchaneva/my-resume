@@ -1,21 +1,25 @@
-header{
-  
-}
+@use "./mixins" as *;
+
 .name{
   text-decoration: none;
+  min-width: 300px;
 }
 .header__wrapper {
-  display: inline-grid;
-  grid-template-columns: 310px 250px 425px 1px;
-  gap: 10px;
-  font-size: var(--font-size-base);}
+  display: grid;
+  font-size: var(--font-size-base);
+  @include grid(1fr 1fr 10fr 1fr, 0, center, left);
+}
 
 .menu {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
+  @include flex-row(15px, center, flex-start);
   padding: 0;
-  a{
-    font-family: var(--title-font-family);
+
+  a {
+    padding-left: 1rem; 
+    font-family: var(--title-font-family); }
+
+  @include mq(sm) {
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }

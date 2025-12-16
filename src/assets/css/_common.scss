@@ -1,19 +1,29 @@
-h1{
-    font-family: var(--title-font-family);
-    font-size: 30px;
-    text-decoration: none;
-    color: var(--text-color);
+@use "./mixins" as *;
+
+h1 { 
+    @include title-text(1.75rem); text-decoration: none; 
 }
-h3{
-    font-family: var(--title-font-family);
-    font-size: bold;
+
+h3 { 
+    font-family: var(--title-font-family); 
+    font-size: 1.2rem;
 }
-a {
-    font-family: var(--font-family);
-    color: var(--text-color);
-    font-size: var(--font-size-base);
-    // text-decoration: none;
+
+a { 
+    @include body-link; 
 }
-li{
-    list-style: none;
+
+ul { 
+    @include list-reset; 
+}
+
+li a {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover { opacity: 0.6; }
+}
+
+section{
+    margin-top: 1rem;
 }

@@ -1,0 +1,101 @@
+$bp-sm: 600px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+@mixin mq($bp) {
+  @if $bp == sm {
+    @media (max-width: $bp-sm) { @content; }
+  } @else if $bp == md {
+    @media (max-width: $bp-md) { @content; }
+  } @else if $bp == lg {
+    @media (max-width: $bp-lg) { @content; }
+  } @else {
+    @media (max-width: $bp) { @content; }
+  }
+}
+
+@mixin flex-row($gap: 0, $align: center, $justify: flex-start) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin flex-col($gap: 0, $align: stretch, $justify: flex-start) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin grid($cols, $gap: 0, $align: center, $justify: start) {
+  display: grid;
+  grid-template-columns: $cols;
+  gap: $gap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin projects-grid($min: 0, $gap: 2rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+  gap: $gap;
+}
+
+@mixin title-text($size: 30px) {
+  font-family: var(--title-font-family);
+  font-size: $size;
+  color: var(--text-color);
+}
+
+@mixin body-link {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  font-size: var(--font-size-base);
+}
+
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin img-hover-dim($brightness: 0.9, $saturate: 0.8) {
+  &:hover {
+    filter: brightness($brightness) saturate($saturate);
+  }
+}
+
+@mixin cover-img($ratio: 16/10) {
+  width: 100%;
+  aspect-ratio: $ratio;
+  object-fit: cover;
+}
+
+@mixin reset-box {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@mixin base-page {
+  background: var(--background-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+
+@mixin page-padding-x($pad: var(--base-padding)) {
+  padding-left: $pad;
+  padding-right: $pad;
+}
+
+@mixin app-shell($max: var(--container-width)) {
+  max-width: $max;
+  margin: 0 auto;
+  padding-top: var(--base-padding);
+  display: grid;
+}
