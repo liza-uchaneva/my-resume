@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="show" class="see-more">
-      <a href="/projects">see more works →</a>
+      <router-link to="/projects">see more works →</router-link>
     </div>
 
     <div class="projects">
