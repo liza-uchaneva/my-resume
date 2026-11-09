@@ -33,6 +33,11 @@ const projects = [
     img: new URL("../assets/img/projects/Pebble.png", import.meta.url).href,
   },
   {
+    title: "map builder",
+    href: "https://liza-uchaneva.github.io/mork-borg-map-builder/",
+    img: new URL("../assets/img/projects/map-builder.png", import.meta.url).href,
+  },
+  {
     title: "ghostgame",
     href: "https://liza-uchaneva.github.io/GhostGame/",
     img: new URL("../assets/img/projects/ghost.png", import.meta.url).href,

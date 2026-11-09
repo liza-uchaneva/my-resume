@@ -8,12 +8,12 @@
           <div class="info-text">
             <h1>Info</h1>
             <p>
-              <b>Hi! I’m Lisa</b>, a software developer based in <b>Los Angeles</b>.
-              I enjoy coding, problem-solving, and learning new skills.<br><br>
+              <b>Hi! I'm Lisa</b>, a full-stack developer based in <b>Los Angeles</b>.<br><br>
 
-              I work with <b>Vue, .NET, JavaScript, Ruby on Rails, HTML, and CSS</b>,
-              and I especially enjoy building websites and helpful tools<br>
-              that make everyday life a bit better.
+              I build web apps with <b>Vue, TypeScript, and JavaScript</b> on the front end
+              and <b>.NET and Ruby on Rails</b> on the back end, with <b>SQL</b> databases.<br><br>
+
+              I'm looking for a <b>junior developer role</b> where I can grow and ship real features with a team.
             </p>
           </div>
         </div>
