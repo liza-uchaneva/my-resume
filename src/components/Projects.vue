@@ -4,7 +4,7 @@
       <router-link to="/projects">see more works →</router-link>
     </div>
 
-    <div class="projects">
+    <div class="projects" :class="{ 'projects--row': show }">
       <div class="project-wrap" v-for="p in visibleProjects" :key="p.title">
         <a :href="p.href" target="_blank" rel="noreferrer">
           <img class="project-img" :src="p.img" :alt="p.title" />

@@ -4,6 +4,15 @@
     @include projects-grid(550px, 2rem); 
 }
 
+// Front page: keep the preview works in a single line
+.projects--row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @include mq(md) {
+        grid-template-columns: 1fr;
+    }
+}
+
 .project-wrap { 
     @include flex-col(0.5rem); margin-top: 1rem; 
 }
