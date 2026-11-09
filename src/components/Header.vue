@@ -1,8 +1,8 @@
 <template>
-  <header id="app" class="header">
+  <header class="header">
     <div class="header__wrapper">
       <router-link class="name" to="/"><h1>ELIZAVETA UCHANEVA</h1></router-link>
-      <div>
+      <div class="role">
         <h3>software</h3>
         <h3>engineer</h3>
       </div>
@@ -13,7 +13,6 @@
           <router-link to="/projects">PROJECTS</router-link>
         </div>
       </nav>
-      <h3>2025</h3>
     </div>
   </header>
 </template>

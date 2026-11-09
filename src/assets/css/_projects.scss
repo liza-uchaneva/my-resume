@@ -1,7 +1,7 @@
 @use "./mixins" as *;
 
 .projects { 
-    @include projects-grid(550px, 2rem); 
+    @include projects-grid(min(550px, 100%), 2rem); 
 }
 
 // Front page: keep the preview works in a single line

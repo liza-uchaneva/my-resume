@@ -3,12 +3,12 @@
     <div class="about">
         <div class="info-wrap">
           <div class="img-wrap">
-              <img src="../assets/img/main.jpg"></img>
+              <img src="../assets/img/main.jpg" alt="Liza Uchaneva" />
           </div>
           <div class="info-text">
             <h1>Info</h1>
             <p>
-              <b>Hi! I'm Lisa</b>, a full-stack developer based in <b>Los Angeles</b>.<br><br>
+              <b>Hi! I'm Liza</b>, a full-stack developer based in <b>Los Angeles</b>.<br><br>
 
               I build web apps with <b>Vue, TypeScript, and JavaScript</b> on the front end
               and <b>.NET and Ruby on Rails</b> on the back end, with <b>SQL</b> databases.<br><br>

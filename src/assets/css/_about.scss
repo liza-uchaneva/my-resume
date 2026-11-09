@@ -1,20 +1,46 @@
 @use "./mixins" as *;
 
-.about{
-    padding-top: var(--base-padding);
-    @include grid(2fr 1fr 1fr, 4rem, start, start);
+.about {
+  padding-top: var(--base-padding);
+  @include grid(2fr 1fr 1fr, 4rem, start, start);
 
-    @include mq(lg) {
-        @include grid(1fr, 2rem, start, start);
-    }
+  // Tablet/phone: info on top, Contact + Follow side by side below
+  @include mq(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    .info-wrap { grid-column: 1 / -1; }
+  }
 }
 
-.info-wrap { 
-  @include flex-row(30px); 
-  @include mq(md) { @include flex-col(1rem); }
+.info-wrap {
+  @include flex-row(30px);
+
+  @include mq(md) { @include flex-col(1.25rem); }
 }
 
-.img-wrap img { max-height: 285px; }
-.info-text{
-  min-width: 390px;
+.img-wrap img {
+  display: block;
+  max-height: 285px;
+  max-width: 100%;
+
+  @include mq(md) {
+    width: 100%;
+    max-width: 420px;
+    max-height: none;
+    height: auto;
+  }
+}
+
+.info-text {
+  max-width: 60ch;
+
+  p { line-height: 1.5; }
+}
+
+.link h1 { margin-bottom: 0.5rem; }
+
+.link li a {
+  display: inline-block;
+  padding: 0.2rem 0; // bigger tap target
 }

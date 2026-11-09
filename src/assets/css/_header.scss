@@ -1,25 +1,42 @@
 @use "./mixins" as *;
 
-.name{
+.name {
   text-decoration: none;
-  min-width: 300px;
-}
-.header__wrapper {
-  display: grid;
-  font-size: var(--font-size-base);
-  @include grid(1fr 1fr 10fr 1fr, 0, center, left);
+
+  h1 {
+    font-size: clamp(1.4rem, 5vw, 1.75rem);
+    line-height: 1.1;
+  }
 }
 
+.header__wrapper {
+  font-size: var(--font-size-base);
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 1rem 3rem;
+  align-items: center;
+
+  // Phone: name on its own line, role and menu share the next one
+  @include mq(md) {
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem 1rem;
+
+    .name { grid-column: 1 / -1; }
+  }
+}
+
+.role h3 { line-height: 1.1; }
+
 .menu {
-  @include flex-row(15px, center, flex-start);
+  @include flex-row(1.5rem, center, flex-start);
   padding: 0;
 
   a {
-    padding-left: 1rem; 
-    font-family: var(--title-font-family); }
+    font-family: var(--title-font-family);
+    padding: 0.25rem 0; // bigger tap target
+  }
 
   @include mq(sm) {
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 1rem;
   }
 }
