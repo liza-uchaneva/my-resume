@@ -43,11 +43,6 @@ const projects = [
     img: new URL("../assets/img/projects/ghost.png", import.meta.url).href,
   },
   {
-    title: "landing",
-    href: "https://github.com/AnnaMaximenko/africa",
-    img: new URL("../assets/img/projects/landing.png", import.meta.url).href,
-  },
-  {
     title: "weather API",
     href: "https://liza-uchaneva.github.io/WeatherApp_TheOdinProject-/",
     img: new URL("../assets/img/projects/weather.jpg", import.meta.url).href,
