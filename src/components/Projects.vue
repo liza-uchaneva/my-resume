@@ -27,12 +27,12 @@
             {{ p.title }}
           </a>
 
-          <p class="project-desc">{{ p.description }}</p>
-          <p v-if="p.learned" class="project-learned">{{ p.learned }}</p>
-
           <ul class="project-tags">
             <li v-for="t in p.tech" :key="t">{{ t }}</li>
           </ul>
+
+          <p class="project-desc">{{ p.description }}</p>
+          <p v-if="p.learned" class="project-learned">{{ p.learned }}</p>
 
           <div class="project-links">
             <a :href="p.demo" target="_blank" rel="noreferrer">live demo ↗</a>
