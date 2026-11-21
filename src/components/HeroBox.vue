@@ -99,6 +99,7 @@ import links, { email } from "../data/links.js";
   border-radius: 50%;
   object-fit: cover;
   object-position: center 30%;
+  box-shadow: 0 12px 30px rgba(59, 43, 44, 0.22); // lifts the photo slightly off the box
   margin-top: 2.5rem;
   margin-left: 2.5rem;
 

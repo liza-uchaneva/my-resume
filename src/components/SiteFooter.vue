@@ -2,7 +2,9 @@
   <footer class="site-footer">
     <ul class="site-footer__links">
       <li v-for="l in links" :key="l.label">
-        <a :href="l.href" target="_blank" rel="noreferrer">{{ l.label }}</a>
+        <a :href="l.href" target="_blank" rel="noreferrer" :aria-label="l.label" :title="l.label">
+          <SocialIcon :name="l.label" />
+        </a>
       </li>
     </ul>
     <a class="site-footer__email" :href="`mailto:${email}`">{{ email }}</a>
@@ -11,6 +13,7 @@
 
 <script setup>
 import links, { email } from "../data/links.js";
+import SocialIcon from "./SocialIcon.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -35,11 +38,13 @@ import links, { email } from "../data/links.js";
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem 2rem;
+  gap: 0.75rem 1.5rem;
 
+  // Brown line icons; they turn yellow on hover like every other link.
   a {
-    font-size: inherit;
-    letter-spacing: 0.12em;
+    display: inline-flex;
+    color: var(--brown);
+    &:hover { color: var(--gold); }
   }
 }
 
