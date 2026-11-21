@@ -1,7 +1,7 @@
 <template>
   <!-- Pinned to the corner of the projects box while the list is open. -->
   <nav class="project-controls" aria-label="Project list controls">
-    <button type="button" class="pill" aria-expanded="true" aria-label="Show fewer projects" @click="emit('less')">
+    <button ref="lessBtn" type="button" class="pill" aria-expanded="true" aria-label="Show fewer projects" @click="emit('less')">
       see less
     </button>
     <button type="button" class="round" aria-label="Go to first project" @click="emit('first')">↑</button>
@@ -10,7 +10,14 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 const emit = defineEmits(["less", "first", "last"]);
+const lessBtn = ref(null);
+
+defineExpose({
+  focusLess: () => lessBtn.value?.focus({ preventScroll: true }),
+});
 </script>
 
 <style lang="scss" scoped>

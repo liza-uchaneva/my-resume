@@ -18,3 +18,9 @@ export async function withViewTransition(update, env = browserEnv()) {
   const transition = env.document.startViewTransition(update);
   await transition.updateCallbackDone;
 }
+
+// Scroll behavior for programmatic scrolls. "instant" (not "auto") so the page's
+// CSS `scroll-behavior: smooth` can't sneak smooth scrolling back in.
+export function scrollBehavior(env = browserEnv()) {
+  return prefersReducedMotion(env) ? "instant" : "smooth";
+}

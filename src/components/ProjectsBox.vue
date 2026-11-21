@@ -36,10 +36,11 @@
 
     <button
       v-if="!expanded"
+      ref="seeMoreBtn"
       class="see-more"
       type="button"
       aria-expanded="false"
-      @click="setExpanded(true)"
+      @click="expand"
     >
       see more →
     </button>
@@ -49,20 +50,22 @@
       <a href="https://github.com/liza-uchaneva" target="_blank" rel="noreferrer">GitHub</a>
     </p>
 
-    <ProjectControls v-if="expanded" @less="collapse" @first="goTo('first')" @last="goTo('last')" />
+    <ProjectControls v-if="expanded" ref="controls" @less="collapse" @first="goTo('first')" @last="goTo('last')" />
   </section>
 </template>
 
 <script setup>
 import { ref, nextTick } from "vue";
 import projects from "../data/projects.js";
-import { withViewTransition, prefersReducedMotion } from "../utils/viewTransition";
+import { withViewTransition, scrollBehavior } from "../utils/viewTransition";
 import ProjectControls from "./ProjectControls.vue";
 
 const featured = projects.filter((p) => p.featured);
 
 const expanded = ref(false);
 const boxEl = ref(null);
+const seeMoreBtn = ref(null);
+const controls = ref(null);
 
 // afterUpdate runs inside the transition, so any scroll it does is part of the
 // "new" snapshot and the cards animate straight to where the user will see them.
@@ -74,8 +77,15 @@ function setExpanded(next, afterUpdate) {
   });
 }
 
+// The button that was clicked disappears in each direction, so move keyboard
+// focus to its counterpart instead of letting it fall back to <body>.
+function expand() {
+  setExpanded(true, () => controls.value?.focusLess());
+}
+
 function collapse() {
   setExpanded(false, () => {
+    seeMoreBtn.value?.focus({ preventScroll: true });
     // Land just above the box so its rounded top edge is visible.
     const top = boxEl.value.getBoundingClientRect().top + window.scrollY - 16;
     window.scrollTo({ top, behavior: "instant" });
@@ -85,7 +95,7 @@ function collapse() {
 function goTo(which) {
   const rows = boxEl.value?.querySelectorAll("[data-project-row]") ?? [];
   const row = which === "first" ? rows[0] : rows[rows.length - 1];
-  row?.scrollIntoView({ block: "center", behavior: prefersReducedMotion() ? "auto" : "smooth" });
+  row?.scrollIntoView({ block: "center", behavior: scrollBehavior() });
 }
 </script>
 

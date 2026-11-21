@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { withViewTransition, prefersReducedMotion } from "./viewTransition";
+import { withViewTransition, prefersReducedMotion, scrollBehavior } from "./viewTransition";
 
 const env = ({ vt = true, reduce = false } = {}) => {
   const document = {};
@@ -40,5 +40,14 @@ describe("prefersReducedMotion", () => {
   it("reads the media query", () => {
     expect(prefersReducedMotion(env({ reduce: true }))).toBe(true);
     expect(prefersReducedMotion(env({ reduce: false }))).toBe(false);
+  });
+});
+
+describe("scrollBehavior", () => {
+  it("is instant for reduced-motion users (never falls back to CSS smooth scrolling)", () => {
+    expect(scrollBehavior(env({ reduce: true }))).toBe("instant");
+  });
+  it("is smooth otherwise", () => {
+    expect(scrollBehavior(env({ reduce: false }))).toBe("smooth");
   });
 });
