@@ -23,7 +23,7 @@
     <!-- Sending is not wired up yet: submit is prevented and nothing leaves the page. -->
     <form id="contact-form" class="contact__form" @submit.prevent>
       <h2 class="contact__form-title">..or you can write me here</h2>
-      <input ref="nameInput" type="text" name="name" placeholder="Name" aria-label="Name" />
+      <input type="text" name="name" placeholder="Name" aria-label="Name" />
       <input type="email" name="email" placeholder="Email" aria-label="Email" />
       <textarea name="message" rows="4" placeholder="Text" aria-label="Text"></textarea>
       <button type="submit">send</button>
@@ -32,14 +32,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
-const nameInput = ref(null);
-
-function focusForm() {
-  nameInput.value?.scrollIntoView({ behavior: "smooth", block: "center" });
-  nameInput.value?.focus({ preventScroll: true });
-}
+import { email } from "../data/links.js";
 </script>
 
 <style lang="scss" scoped>
