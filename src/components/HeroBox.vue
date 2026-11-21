@@ -11,7 +11,11 @@
     <div class="hero__side">
       <ul class="hero__links">
         <li v-for="l in links" :key="l.label">
-          <a :href="l.href" target="_blank" rel="noreferrer">{{ l.label }}</a>
+          <a :href="l.href" target="_blank" rel="noreferrer" :aria-label="l.label">
+            <!-- Words on desktop, icons on phones (they fit on one line). -->
+            <span class="hero__link-label">{{ l.label }}</span>
+            <SocialIcon class="hero__link-icon" :name="l.label" />
+          </a>
         </li>
       </ul>
 
@@ -24,6 +28,7 @@
 
 <script setup>
 import links, { email } from "../data/links.js";
+import SocialIcon from "./SocialIcon.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -64,11 +69,10 @@ import links, { email } from "../data/links.js";
     "email email";
   row-gap: 1.5rem;
 
+  // Phones: unwrap so the photo, text, links and email can be ordered as one
+  // column: photo, "Hi!" + intro, links, email.
   @include mq(md) {
-    order: -1;
-    grid-template-columns: 1fr;
-    grid-template-areas: "photo" "links" "email";
-    justify-items: center;
+    display: contents;
   }
 }
 
@@ -84,11 +88,28 @@ import links, { email } from "../data/links.js";
   }
 
   @include mq(md) {
+    grid-area: auto;
+    justify-self: center;
+    order: 1;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.75rem;
   }
+}
+
+.hero__link-icon {
+  display: none;
+}
+
+@include mq(md) {
+  .hero__links a {
+    display: inline-flex;
+    color: var(--brown);
+    &:hover { color: var(--gold); }
+  }
+
+  .hero__link-label { display: none; }
+  .hero__link-icon { display: block; }
 }
 
 .hero__photo {
@@ -104,9 +125,11 @@ import links, { email } from "../data/links.js";
   margin-left: 2.5rem;
 
   @include mq(md) {
+    grid-area: auto;
     justify-self: center;
+    order: -1;
     width: min(70%, 14rem);
-    margin-top: 0;
+    margin: 0;
   }
 }
 
@@ -114,5 +137,12 @@ import links, { email } from "../data/links.js";
   grid-area: email;
   font-size: 1rem;
   text-decoration: none;
+
+  @include mq(md) {
+    grid-area: auto;
+    justify-self: center;
+    order: 2;
+    margin-top: -1rem; // keep it close to the icons above
+  }
 }
 </style>

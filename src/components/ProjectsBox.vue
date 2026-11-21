@@ -272,6 +272,17 @@ function goToLast() {
   .project-tags {
     flex: 1;
   }
+
+  // Phones: too narrow to share a line, so links get their own line under the tags.
+  @include mq(md) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+
+    .project-links {
+      align-self: flex-end;
+    }
+  }
 }
 
 .project-links {
