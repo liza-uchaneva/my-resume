@@ -51,6 +51,7 @@ const featured = projects.filter((p) => p.featured);
 .cards {
   container-type: inline-size;
   display: flex;
+  justify-content: center;
   padding-block: 0.5rem;
 }
 
