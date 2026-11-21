@@ -195,7 +195,6 @@ function goToLast() {
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: clamp(1.5rem, 5cqi, 4rem);
-    padding-left: clamp(0rem, 6cqi, 5rem);
   }
 
   .card {
