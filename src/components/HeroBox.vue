@@ -3,8 +3,8 @@
     <div class="hero__text">
       <h1 class="hero__title"><b>Hi!</b></h1>
       <p>
-        My name is <i>Liza</i>, a full-stack developer from <i>Los Angeles</i><br>
-        Passionate about building fast, secure, and scalable web applications
+        I’m <i>Liza</i>, a full-stack developer based in <i>Los Angeles</i>.<br>
+        I love building fast, secure, and scalable web applications.
       </p>
     </div>
 

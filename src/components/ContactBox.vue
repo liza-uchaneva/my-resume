@@ -1,31 +1,31 @@
 <template>
   <section class="box box--contact contact">
     <div class="contact__text">
-      <h2 class="contact__label">shortly</h2>
+      <h2 class="contact__label">in short</h2>
       <p>
-        I’m a self-taught developer who always picking up new tools and technologies,
-        enjoy problem-solving, building web apps that are fast, reliable, and easy to use
+        I’m a self-taught developer who’s always picking up new tools and technologies.
+        I enjoy solving problems and building web apps that are fast, reliable, and easy to use.
       </p>
       <p>
         I’m currently looking for a junior developer role where I can grow and ship
-        real features with a team
+        real features as part of a team.
       </p>
-      <!-- TODO: point to the CV PDF (e.g. /cv.pdf in public/) once it exists -->
-      <p class="contact__strong">
-        check my <a class="accent accent--underline" href="#" target="_blank" rel="noreferrer">CV</a>
+      <p>
+        Take a look at my
+        <a class="accent accent--underline" :href="cvUrl" target="_blank" rel="noreferrer">CV</a>.
       </p>
-      <p class="contact__strong">
+      <p>
         If you’d like to chat, share ideas, or talk about an opportunity, feel free to
-        <a class="accent" :href="`mailto:${email}`">contact me</a>
+        <a class="accent" :href="`mailto:${email}`">contact me</a>.
       </p>
     </div>
 
     <!-- Sending is not wired up yet: submit is prevented and nothing leaves the page. -->
     <form id="contact-form" class="contact__form" @submit.prevent>
-      <h2 class="contact__form-title">..or you can write me here</h2>
+      <h2 class="contact__form-title">…or write to me here</h2>
       <input type="text" name="name" placeholder="Name" aria-label="Name" />
       <input type="email" name="email" placeholder="Email" aria-label="Email" />
-      <textarea name="message" rows="4" placeholder="Text" aria-label="Text"></textarea>
+      <textarea name="message" rows="4" placeholder="Message" aria-label="Message"></textarea>
       <button type="submit">send</button>
     </form>
   </section>
@@ -33,6 +33,9 @@
 
 <script setup>
 import { email } from "../data/links.js";
+
+// The CV lives in public/, so it is served next to index.html (BASE_URL is /my-resume/).
+const cvUrl = `${import.meta.env.BASE_URL}Elizaveta-Uchaneva-resume.pdf`;
 </script>
 
 <style lang="scss" scoped>
@@ -68,13 +71,8 @@ import { email } from "../data/links.js";
   margin-bottom: -0.75rem;
 }
 
-.contact__strong {
-  font-weight: 700;
-}
-
 .accent {
   color: var(--gold);
-  font-weight: 700;
   text-decoration: none;
   &:hover { opacity: 0.75; }
 }

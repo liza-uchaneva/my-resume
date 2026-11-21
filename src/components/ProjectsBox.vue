@@ -2,8 +2,7 @@
   <section ref="boxEl" class="box box--projects projects-box">
     <p v-if="!expanded" class="projects-box__stack">
       I build web apps with <b>Vue</b>, <b>TypeScript</b>, and <b>JavaScript</b> on the
-      front end and <b>.NET</b> and <b>Ruby on Rails</b> on the back end, with
-      <b>SQL databases</b>.
+      front end, and <b>.NET</b> or <b>Ruby on Rails</b> on the back end.
     </p>
 
     <!-- The same card elements are used in both layouts so the view transition
@@ -38,7 +37,7 @@
          Expanded: GitHub line centered under the list. -->
     <div class="projects-box__bottom" :class="{ 'projects-box__bottom--open': expanded }">
       <p class="projects-box__more">
-        you can find more projects on
+        you can find more of my projects on
         <a href="https://github.com/liza-uchaneva" target="_blank" rel="noreferrer">GitHub</a>
       </p>
       <button
@@ -288,7 +287,6 @@ function goTo(which) {
 }
 
 .projects-box__more {
-  font-weight: 700;
   font-size: 0.9rem;
 
   a {
