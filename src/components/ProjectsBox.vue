@@ -34,8 +34,8 @@
     </div>
 
     <!-- Collapsed: GitHub line bottom-left, "see more" bottom-right.
-         Expanded: GitHub line centered under the list. -->
-    <div class="projects-box__bottom" :class="{ 'projects-box__bottom--open': expanded }">
+         Expanded: GitHub line under the list. -->
+    <div class="projects-box__bottom">
       <p class="projects-box__more">
         you can find more of my projects on
         <a href="https://github.com/liza-uchaneva" target="_blank" rel="noreferrer">GitHub</a>
@@ -121,7 +121,7 @@ function goTo(which) {
 .projects-box__stack {
   view-transition-name: projects-stack-text; // slides with the layout instead of cross-fading
   max-width: 22rem;
-  text-align: center;
+  text-align: left;
   font-size: 0.95rem;
   line-height: 1.45;
 }
@@ -205,7 +205,7 @@ function goTo(which) {
   @include mq(md) {
     .project-row {
       grid-template-columns: 1fr;
-      justify-items: center;
+      justify-items: start;
       padding-left: 0;
       gap: 1.25rem;
     }
@@ -219,7 +219,7 @@ function goTo(which) {
 .project-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   max-width: 28rem;
   animation: details-in 0.45s ease 0.35s both;
@@ -234,7 +234,7 @@ function goTo(which) {
   @include list-reset;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.4rem;
 
   li {
@@ -247,7 +247,7 @@ function goTo(which) {
 }
 
 .project-desc {
-  text-align: center;
+  text-align: left;
   line-height: 1.5;
 }
 
@@ -267,10 +267,6 @@ function goTo(which) {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-}
-
-.projects-box__bottom--open {
-  justify-content: center;
 }
 
 .see-more {
