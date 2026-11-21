@@ -177,8 +177,10 @@ function goTo(which) {
     padding-left: clamp(0rem, 6cqi, 5rem);
   }
 
+  // Wider, shorter cards in the list (closer to the mockup); images crop to fit.
   .card {
     --w: min(30rem, calc(100cqi * 0.42));
+    aspect-ratio: 2 / 1;
   }
 
   @include mq(md) {
