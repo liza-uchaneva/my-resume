@@ -1,5 +1,116 @@
 <template>
-  <section class="box box--hero">
-    <h1>hero</h1>
+  <section class="box box--hero hero">
+    <div class="hero__text">
+      <h1 class="hero__title">Hi!</h1>
+      <p>
+        My name is Lisa, a full-stack developer based in Los Angeles,
+        passionate about building fast, secure, and scalable web applications.
+      </p>
+    </div>
+
+    <div class="hero__side">
+      <ul class="hero__links">
+        <li v-for="l in links" :key="l.label">
+          <a :href="l.href" target="_blank" rel="noreferrer">{{ l.label }}</a>
+        </li>
+      </ul>
+
+      <img class="hero__photo" src="../assets/img/main.jpg" alt="Lisa Uchaneva" />
+
+      <a class="hero__email" :href="`mailto:${email}`">{{ email }}</a>
+    </div>
   </section>
 </template>
+
+<script setup>
+import links, { email } from "../data/links.js";
+</script>
+
+<style lang="scss" scoped>
+@use "../assets/css/mixins" as *;
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding-block: 2.5rem 4rem;
+
+  @include mq(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero__title {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: normal;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.hero__text p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.5;
+  max-width: 32rem;
+}
+
+.hero__side {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "links photo"
+    ".     photo"
+    "email email";
+  row-gap: 1.5rem;
+
+  @include mq(md) {
+    order: -1;
+    grid-template-columns: 1fr;
+    grid-template-areas: "photo" "links" "email";
+    justify-items: center;
+  }
+}
+
+.hero__links {
+  grid-area: links;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  a {
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+  }
+
+  @include mq(md) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+.hero__photo {
+  grid-area: photo;
+  justify-self: end;
+  width: min(100%, 17rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
+  margin-top: 2.5rem;
+
+  @include mq(md) {
+    justify-self: center;
+    width: min(70%, 14rem);
+    margin-top: 0;
+  }
+}
+
+.hero__email {
+  grid-area: email;
+  font-size: 0.85rem;
+  text-decoration: none;
+  &:hover { opacity: 0.6; }
+}
+</style>
