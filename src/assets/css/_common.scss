@@ -9,8 +9,12 @@ h3 {
     font-size: 1.2rem;
 }
 
-a { 
-    @include body-link; 
+// Every link turns yellow on hover.
+a {
+    @include body-link;
+    transition: color 0.2s ease;
+
+    &:hover { color: var(--gold); }
 }
 
 ul { 
@@ -19,9 +23,6 @@ ul {
 
 li a {
   text-decoration: none;
-  transition: color 0.2s ease;
-
-  &:hover { color: var(--gold); }
 }
 
 section{

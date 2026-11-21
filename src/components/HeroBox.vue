@@ -113,7 +113,5 @@ import links, { email } from "../data/links.js";
   grid-area: email;
   font-size: 1rem;
   text-decoration: none;
-  transition: color 0.2s ease;
-  &:hover { color: var(--gold); }
 }
 </style>

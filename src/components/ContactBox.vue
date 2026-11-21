@@ -62,6 +62,7 @@ import { email } from "../data/links.js";
 }
 
 .contact__label {
+  font-family: var(--title-font-family);
   font-size: 0.95rem;
   font-weight: normal;
   margin-bottom: -0.75rem;

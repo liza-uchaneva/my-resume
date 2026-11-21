@@ -1,6 +1,6 @@
 <template>
   <section ref="boxEl" class="box box--projects projects-box">
-    <p class="projects-box__stack">
+    <p v-if="!expanded" class="projects-box__stack">
       I build web apps with <b>Vue</b>, <b>TypeScript</b>, and <b>JavaScript</b> on the
       front end and <b>.NET</b> and <b>Ruby on Rails</b> on the back end, with
       <b>SQL databases</b>.
@@ -34,21 +34,24 @@
       </div>
     </div>
 
-    <button
-      v-if="!expanded"
-      ref="seeMoreBtn"
-      class="see-more"
-      type="button"
-      aria-expanded="false"
-      @click="expand"
-    >
-      see more →
-    </button>
-
-    <p v-else class="projects-box__more">
-      you can find more projects on
-      <a href="https://github.com/liza-uchaneva" target="_blank" rel="noreferrer">GitHub</a>
-    </p>
+    <!-- Collapsed: GitHub line bottom-left, "see more" bottom-right.
+         Expanded: GitHub line centered under the list. -->
+    <div class="projects-box__bottom" :class="{ 'projects-box__bottom--open': expanded }">
+      <p class="projects-box__more">
+        you can find more projects on
+        <a href="https://github.com/liza-uchaneva" target="_blank" rel="noreferrer">GitHub</a>
+      </p>
+      <button
+        v-if="!expanded"
+        ref="seeMoreBtn"
+        class="see-more"
+        type="button"
+        aria-expanded="false"
+        @click="expand"
+      >
+        see more →
+      </button>
+    </div>
 
     <ProjectControls v-if="expanded" ref="controls" @less="collapse" @first="goTo('first')" @last="goTo('last')" />
   </section>
@@ -256,12 +259,22 @@ function goTo(which) {
   a {
     font-weight: 700;
     text-decoration: underline;
-    &:hover { opacity: 0.7; }
   }
 }
 
+.projects-box__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.projects-box__bottom--open {
+  justify-content: center;
+}
+
 .see-more {
-  align-self: flex-end;
   background: none;
   border: none;
   color: inherit;
@@ -269,16 +282,17 @@ function goTo(which) {
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  &:hover { opacity: 0.7; }
+  transition: color 0.2s ease;
+  &:hover { color: var(--gold); }
 }
 
 .projects-box__more {
-  text-align: center;
   font-weight: 700;
+  font-size: 0.9rem;
 
   a {
+    font-size: inherit;
     text-decoration: underline;
-    &:hover { opacity: 0.7; }
   }
 }
 
