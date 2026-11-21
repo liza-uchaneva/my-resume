@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- "EU" monogram in the site palette -->
+  <rect width="32" height="32" rx="9" fill="#3B2B2C"/>
+  <g fill="none" stroke="#FFFFFC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 9H7.5v14H14M7.5 16H12.5"/>
+    <path d="M18.5 9v8.5a3.75 3.75 0 0 0 7.5 0V9"/>
+  </g>
+  <circle cx="22.25" cy="25.5" r="1.6" fill="#BFB23A"/>
+</svg>

@@ -16,7 +16,7 @@
       </p>
       <p class="contact__strong">
         If you’d like to chat, share ideas, or talk about an opportunity, feel free to
-        <a class="accent" href="#contact-form" @click.prevent="focusForm">contact me</a>
+        <a class="accent" :href="`mailto:${email}`">contact me</a>
       </p>
     </div>
 

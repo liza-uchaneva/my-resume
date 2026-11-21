@@ -1,10 +1,10 @@
 <template>
   <section class="box box--hero hero">
     <div class="hero__text">
-      <h1 class="hero__title">Hi!</h1>
+      <h1 class="hero__title"><b>Hi!</b></h1>
       <p>
-        My name is Lisa, a full-stack developer based in Los Angeles,
-        passionate about building fast, secure, and scalable web applications.
+        My name is <i>Liza</i>, a full-stack developer from <i>Los Angeles</i><br>
+        Passionate about building fast, secure, and scalable web applications
       </p>
     </div>
 
@@ -76,10 +76,10 @@ import links, { email } from "../data/links.js";
   grid-area: links;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1rem;
 
   a {
-    font-size: 0.85rem;
+    font-size: 1rem;
     letter-spacing: 0.03em;
   }
 
@@ -93,13 +93,14 @@ import links, { email } from "../data/links.js";
 
 .hero__photo {
   grid-area: photo;
-  justify-self: end;
-  width: min(100%, 17rem);
+  justify-self: flex-start;
+  width: min(100%, 25rem);
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 30%;
   margin-top: 2.5rem;
+  margin-left: 2.5rem;
 
   @include mq(md) {
     justify-self: center;
@@ -110,7 +111,7 @@ import links, { email } from "../data/links.js";
 
 .hero__email {
   grid-area: email;
-  font-size: 0.85rem;
+  font-size: 1rem;
   text-decoration: none;
   &:hover { opacity: 0.6; }
 }

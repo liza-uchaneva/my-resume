@@ -79,7 +79,6 @@ const featured = projects.filter((p) => p.featured);
   &:hover,
   &:focus-visible {
     transform: translateY(-8px);
-    z-index: 1;
   }
 }
 
