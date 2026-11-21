@@ -4,6 +4,7 @@
 $box-radius: 3.5rem;
 $box-radius-sm: 2rem;
 $box-overlap: 2.5rem;
+$box-max: 44rem; // cap on the "one screen" height so big monitors don't get huge empty boxes
 
 .page {
   display: flex;
@@ -19,14 +20,15 @@ $box-overlap: 2.5rem;
     0 -14px 32px rgba(59, 43, 44, 0.18),
     0 10px 28px rgba(59, 43, 44, 0.12);
   padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
-  // Each box fills (at least) one screen; content is centered inside it.
-  min-height: calc(100vh - 2rem);
-  min-height: calc(100svh - 2rem);
+  // Each box fills one screen (up to $box-max); content is centered inside it.
+  // This is a minimum, so the projects box can still grow when the list opens.
+  min-height: min(calc(100vh - 2rem), #{$box-max});
+  min-height: min(calc(100svh - 2rem), #{$box-max});
 
   & + & {
     margin-top: -$box-overlap;
-    min-height: calc(100vh - 2rem + #{$box-overlap});
-    min-height: calc(100svh - 2rem + #{$box-overlap});
+    min-height: calc(min(100vh - 2rem, #{$box-max}) + #{$box-overlap});
+    min-height: calc(min(100svh - 2rem, #{$box-max}) + #{$box-overlap});
     padding-top: calc(3rem + #{$box-overlap} / 2);
   }
 
