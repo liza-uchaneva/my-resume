@@ -1,7 +1,13 @@
 :root {
     /* Colors */
-  --background-color:  #E8E8E8;
-  --text-color: #061D33;
+  --blue: #8DAFE4;
+  --white: #FFFFFC;
+  --mauve: #A07E7F;
+  --brown: #3B2B2C;
+  --gold: #BFB23A;
+
+  --page-bg: var(--blue);   // updated on scroll by useScrollBackground()
+  --text-color: var(--brown);
 
   /* Typography */
   --font-size-base: 1rem;
