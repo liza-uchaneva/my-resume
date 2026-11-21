@@ -13,6 +13,11 @@ $box-overlap: 2.5rem;
 .box {
   position: relative;
   border-radius: $box-radius;
+  // Soft shadow so the boxes read as stacked cards: the upward part falls on
+  // the box underneath where they overlap.
+  box-shadow:
+    0 -14px 32px rgba(59, 43, 44, 0.18),
+    0 10px 28px rgba(59, 43, 44, 0.12);
   padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
   // Each box fills (at least) one screen; content is centered inside it.
   min-height: calc(100vh - 2rem);

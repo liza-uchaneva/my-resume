@@ -275,6 +275,7 @@ function goTo(which) {
 }
 
 .see-more {
+  margin-left: auto; // stays on the right even when it wraps below the GitHub line
   background: none;
   border: none;
   color: inherit;
