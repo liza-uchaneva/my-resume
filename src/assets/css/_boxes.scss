@@ -14,10 +14,14 @@ $box-overlap: 2.5rem;
   position: relative;
   border-radius: $box-radius;
   padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
-  min-height: 20rem;
+  // Each box fills (at least) one screen; content is centered inside it.
+  min-height: calc(100vh - 2rem);
+  min-height: calc(100svh - 2rem);
 
   & + & {
     margin-top: -$box-overlap;
+    min-height: calc(100vh - 2rem + #{$box-overlap});
+    min-height: calc(100svh - 2rem + #{$box-overlap});
     padding-top: calc(3rem + #{$box-overlap} / 2);
   }
 

@@ -35,6 +35,7 @@ const featured = projects.filter((p) => p.featured);
 .projects-box {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 2rem;
 }
 

@@ -33,6 +33,7 @@ import links, { email } from "../data/links.js";
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  align-content: center;
   gap: 2rem;
   padding-top: 2.5rem;
 

@@ -49,6 +49,7 @@ function focusForm() {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  align-content: center;
   gap: 3rem;
   padding-block: 5rem;
 
