@@ -133,7 +133,7 @@ function goTo(which) {
   --w: min(30rem, calc(100cqi / 2.5));
   flex: 0 0 var(--w);
   width: var(--w);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 2 / 1; // same short, wide shape in the stack and in the list
   position: relative;
   display: block;
   border: clamp(2px, 0.4cqi, 4px) solid var(--white);
@@ -184,10 +184,8 @@ function goTo(which) {
     padding-left: clamp(0rem, 6cqi, 5rem);
   }
 
-  // Wider, shorter cards in the list (closer to the mockup); images crop to fit.
   .card {
     --w: min(30rem, calc(100cqi * 0.42));
-    aspect-ratio: 2 / 1;
   }
 
   @include mq(md) {
