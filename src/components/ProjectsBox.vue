@@ -9,7 +9,7 @@
     <!-- The same card elements are used in both layouts so the view transition
          can slide each one from the stack into the list and back. -->
     <div class="cards" :class="expanded ? 'cards--list' : 'cards--stack'">
-      <div v-for="(p, i) in featured" :key="p.title" class="project-row" data-project-row>
+      <div v-for="(p, i) in visible" :key="p.title" class="project-row" data-project-row>
         <a
           class="card"
           :style="{ viewTransitionName: `project-${i}` }"
@@ -60,7 +60,14 @@ import projects from "../data/projects.js";
 import { withViewTransition, scrollBehavior } from "../utils/viewTransition";
 import ProjectControls from "./ProjectControls.vue";
 
+import { computed } from "vue";
+
+// Collapsed: only the featured projects, as the overlapping stack.
+// Expanded: every project (featured ones first, so their cards keep their
+// view-transition names and slide; the rest fade in below them).
 const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
+const visible = computed(() => (expanded.value ? [...featured, ...others] : featured));
 
 const expanded = ref(false);
 const boxEl = ref(null);
