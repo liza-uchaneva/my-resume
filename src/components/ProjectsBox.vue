@@ -141,10 +141,6 @@ function goToLast() {
   aspect-ratio: 2 / 1; // same short, wide shape in the stack and in the list
   position: relative;
   display: block;
-  // Double frame: white border plus a thin white line floating just outside it.
-  border: clamp(2px, 0.4cqi, 4px) solid var(--white);
-  outline: 1.5px solid var(--white);
-  outline-offset: clamp(3px, 0.5cqi, 5px);
   border-radius: calc(var(--w) * 0.16);
   overflow: hidden;
   box-shadow: -12px 10px 28px rgba(59, 43, 44, 0.35);
