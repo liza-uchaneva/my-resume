@@ -141,8 +141,10 @@ function goToLast() {
   aspect-ratio: 2 / 1; // same short, wide shape in the stack and in the list
   position: relative;
   display: block;
-  // Playful borders: each card gets a palette color, cycling down the list.
-  border: clamp(3px, 0.6cqi, 6px) solid var(--card-border, var(--white));
+  // Double frame: white border plus a thin white line floating just outside it.
+  border: clamp(2px, 0.4cqi, 4px) solid var(--white);
+  outline: 1.5px solid var(--white);
+  outline-offset: clamp(3px, 0.5cqi, 5px);
   border-radius: calc(var(--w) * 0.16);
   overflow: hidden;
   box-shadow: -12px 10px 28px rgba(59, 43, 44, 0.35);
@@ -160,10 +162,6 @@ function goToLast() {
     transform: translateY(-8px);
   }
 }
-
-.project-row:nth-child(3n + 1) .card { --card-border: var(--blue); }
-.project-row:nth-child(3n + 2) .card { --card-border: var(--gold); }
-.project-row:nth-child(3n + 3) .card { --card-border: var(--white); }
 
 // Collapsed: overlapping cards, each covering half of the previous one.
 // Rows use display: contents so the cards sit directly in the flex row.
