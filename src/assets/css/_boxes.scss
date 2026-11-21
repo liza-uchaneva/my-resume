@@ -1,0 +1,32 @@
+@use "./mixins" as *;
+
+// One-page layout: three rounded boxes; each box tucks over the bottom of the one above.
+$box-radius: 3.5rem;
+$box-radius-sm: 2rem;
+$box-overlap: 2.5rem;
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  position: relative;
+  border-radius: $box-radius;
+  padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
+  min-height: 20rem;
+
+  & + & {
+    margin-top: -$box-overlap;
+    padding-top: calc(3rem + #{$box-overlap} / 2);
+  }
+
+  @include mq(md) {
+    border-radius: $box-radius-sm;
+    padding: 2rem 1.25rem;
+  }
+}
+
+.box--hero { background: var(--white); color: var(--brown); }
+.box--projects { background: var(--mauve); color: var(--white); }
+.box--contact { background: var(--brown); color: var(--white); }

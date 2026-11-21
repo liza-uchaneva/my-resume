@@ -1,21 +1,18 @@
 <template>
-  <Header />
-  <About />
-  <Projects :limit="3" :show="true" />
+  <main class="page">
+    <HeroBox />
+    <ProjectsBox />
+    <ContactBox />
+  </main>
+  <SiteFooter />
 </template>
 
-<script>
-import Header from "../components/Header.vue";
-import About from "../components/About.vue";
-import Projects from "../components/Projects.vue";
+<script setup>
+import HeroBox from "../components/HeroBox.vue";
+import ProjectsBox from "../components/ProjectsBox.vue";
+import ContactBox from "../components/ContactBox.vue";
+import SiteFooter from "../components/SiteFooter.vue";
+import { useScrollBackground } from "../composables/useScrollBackground";
 
-export default {
-  components: {
-    Header,
-    About,
-    Projects,
-  },
-};
+useScrollBackground();
 </script>
-
-<style lang="scss" scoped></style>

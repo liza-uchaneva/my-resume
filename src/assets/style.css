@@ -1,9 +1,7 @@
 @import './css/_global.scss';
-@import './css/_header.scss';
-@import './css/_about.scss';
 @import './css/_fonts.scss';
 @import './css/_common.scss';
-@import './css/_projects.scss';
+@import './css/_boxes.scss';
 @import './css/_mixins.scss';
 
 * {
@@ -21,16 +19,15 @@ html, body {
 }
 
 body {
-  display: grid;
   padding-left: var(--base-padding);
   padding-right: var(--base-padding);
 }
 
 #app {
+  width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
   padding-top: var(--base-padding);
-  display: grid;
 }
 
 
