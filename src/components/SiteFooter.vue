@@ -46,6 +46,7 @@ import links, { email } from "../data/links.js";
 .site-footer__email {
   font-size: inherit;
   text-decoration: none;
-  &:hover { opacity: 0.6; }
+  transition: color 0.2s ease;
+  &:hover { color: var(--gold); }
 }
 </style>

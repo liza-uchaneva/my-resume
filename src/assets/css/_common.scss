@@ -19,9 +19,9 @@ ul {
 
 li a {
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
 
-  &:hover { opacity: 0.6; }
+  &:hover { color: var(--gold); }
 }
 
 section{
