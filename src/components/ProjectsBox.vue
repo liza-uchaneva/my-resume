@@ -48,24 +48,44 @@
       you can find more projects on
       <a href="https://github.com/liza-uchaneva" target="_blank" rel="noreferrer">GitHub</a>
     </p>
+
+    <ProjectControls v-if="expanded" @less="collapse" @first="goTo('first')" @last="goTo('last')" />
   </section>
 </template>
 
 <script setup>
 import { ref, nextTick } from "vue";
 import projects from "../data/projects.js";
-import { withViewTransition } from "../utils/viewTransition";
+import { withViewTransition, prefersReducedMotion } from "../utils/viewTransition";
+import ProjectControls from "./ProjectControls.vue";
 
 const featured = projects.filter((p) => p.featured);
 
 const expanded = ref(false);
 const boxEl = ref(null);
 
-function setExpanded(next) {
+// afterUpdate runs inside the transition, so any scroll it does is part of the
+// "new" snapshot and the cards animate straight to where the user will see them.
+function setExpanded(next, afterUpdate) {
   return withViewTransition(async () => {
     expanded.value = next;
     await nextTick();
+    afterUpdate?.();
   });
+}
+
+function collapse() {
+  setExpanded(false, () => {
+    // Land just above the box so its rounded top edge is visible.
+    const top = boxEl.value.getBoundingClientRect().top + window.scrollY - 16;
+    window.scrollTo({ top, behavior: "instant" });
+  });
+}
+
+function goTo(which) {
+  const rows = boxEl.value?.querySelectorAll("[data-project-row]") ?? [];
+  const row = which === "first" ? rows[0] : rows[rows.length - 1];
+  row?.scrollIntoView({ block: "center", behavior: prefersReducedMotion() ? "auto" : "smooth" });
 }
 </script>
 
