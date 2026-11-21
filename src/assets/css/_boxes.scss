@@ -25,6 +25,15 @@ $box-overlap: 2.5rem;
     border-radius: $box-radius-sm;
     padding: 2rem 1.25rem;
   }
+
+  // Leave room for the next box, which slides up over this one's bottom edge.
+  &:not(:last-child) {
+    padding-bottom: calc(3rem + #{$box-overlap});
+
+    @include mq(md) {
+      padding-bottom: calc(2rem + #{$box-overlap});
+    }
+  }
 }
 
 .box--hero { background: var(--white); color: var(--brown); }

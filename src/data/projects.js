@@ -1,4 +1,4 @@
-// Project list shown on the Home page (first 3) and the Projects page.
+// Project list. "featured" projects are shown as cards in the projects box (in this order).
 // Edit the text here — no need to touch the component.
 // "learned": fill in what you learned building each project (shown only when not empty).
 
@@ -7,7 +7,19 @@ const img = (file) =>
 
 export default [
   {
+    title: "map builder",
+    featured: true,
+    description:
+      "An isometric 3D map editor for tabletop RPGs: place blocks, save and export maps, and present them in a VHS-style Player mode.",
+    learned: "",
+    tech: ["TypeScript", "Three.js"],
+    demo: "https://liza-uchaneva.github.io/mork-borg-map-builder/",
+    source: "https://github.com/liza-uchaneva/mork-borg-map-builder",
+    img: img("map-builder.png"),
+  },
+  {
     title: "africa",
+    featured: true,
     description:
       "A multi-section travel landing page for African tours with a contact form that saves visitor applications through a .NET Web API. Deployed on Azure.",
     learned: "",
@@ -18,6 +30,7 @@ export default [
   },
   {
     title: "facewatch",
+    featured: true,
     description:
       "A Pebble watchface whose face smiles or frowns depending on how today's steps compare to your average. Published on the Rebble App Store.",
     learned: "",
@@ -27,17 +40,8 @@ export default [
     img: img("Pebble.png"),
   },
   {
-    title: "map builder",
-    description:
-      "An isometric 3D map editor for tabletop RPGs: place blocks, save and export maps, and present them in a VHS-style Player mode.",
-    learned: "",
-    tech: ["TypeScript", "Three.js"],
-    demo: "https://liza-uchaneva.github.io/mork-borg-map-builder/",
-    source: "https://github.com/liza-uchaneva/mork-borg-map-builder",
-    img: img("map-builder.png"),
-  },
-  {
     title: "ghostgame",
+    featured: true,
     description:
       "A catch-the-ghost arcade game set in a haunted house drawn entirely in CSS.",
     learned: "",

@@ -34,7 +34,7 @@ import links, { email } from "../data/links.js";
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 2rem;
-  padding-block: 2.5rem 4rem;
+  padding-top: 2.5rem;
 
   @include mq(md) {
     grid-template-columns: 1fr;
