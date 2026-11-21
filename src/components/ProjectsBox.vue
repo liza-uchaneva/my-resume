@@ -168,6 +168,18 @@ function goTo(which) {
   .project-row + .project-row .card {
     margin-left: calc(var(--w) * -0.5);
   }
+
+  // Phones: overlap more so each card can be bigger (about a third of each
+  // covered card stays visible).
+  @include mq(md) {
+    .card {
+      --w: calc(100cqi / 1.9);
+    }
+
+    .project-row + .project-row .card {
+      margin-left: calc(var(--w) * -0.7);
+    }
+  }
 }
 
 // Expanded: one row per project, card on the left, details on the right.

@@ -30,6 +30,14 @@ $box-overlap: 2.5rem;
     padding: 2rem 1.25rem;
   }
 
+  // Phones: boxes fit their content instead of filling the screen.
+  &,
+  & + & {
+    @include mq(md) {
+      min-height: auto;
+    }
+  }
+
   // Leave room for the next box, which slides up over this one's bottom edge.
   &:not(:last-child) {
     padding-bottom: calc(3rem + #{$box-overlap});
