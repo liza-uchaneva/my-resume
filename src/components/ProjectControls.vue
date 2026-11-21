@@ -47,9 +47,20 @@ button {
   &:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 }
 
+// Plain text, styled like "see more →".
 .pill {
-  border-radius: 999px;
-  padding: 0.55rem 1.1rem;
+  background: none;
+  box-shadow: none;
+  color: var(--white);
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  text-shadow: 0 1px 6px rgba(59, 43, 44, 0.45); // stays readable over cards
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--gold);
+    transform: none;
+  }
 }
 
 .round {
