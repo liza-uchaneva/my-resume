@@ -1,7 +1,7 @@
 <template>
   <section class="box box--contact contact">
     <div class="contact__text">
-      <h2 class="contact__label">in short</h2>
+      <h2 class="box-label contact__label">in short</h2>
       <p>
         I’m a self-taught developer who’s always picking up new tools and technologies.
         I enjoy solving problems and building web apps that are fast, reliable, and easy to use.
@@ -65,9 +65,6 @@ const cvUrl = `${import.meta.env.BASE_URL}Elizaveta-Uchaneva-resume.pdf`;
 }
 
 .contact__label {
-  font-family: var(--title-font-family);
-  font-size: 0.95rem;
-  font-weight: normal;
   margin-bottom: -0.75rem;
 }
 
@@ -114,7 +111,7 @@ const cvUrl = `${import.meta.env.BASE_URL}Elizaveta-Uchaneva-resume.pdf`;
     border: none;
     border-radius: 999px;
     background: var(--gold);
-    color: var(--white);
+    color: var(--brown); // brown on gold reads at ~6:1 (white was 2.2:1)
     font: inherit;
     font-weight: 700;
     cursor: pointer;

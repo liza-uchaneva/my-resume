@@ -53,6 +53,13 @@ $box-overlap: 2.5rem;
   }
 }
 
+// Small Maregy label at the top of a box ("projects", "in short").
+.box-label {
+  font-family: var(--title-font-family);
+  font-size: 0.95rem;
+  font-weight: normal;
+}
+
 .box--hero { background: var(--white); color: var(--brown); }
 .box--projects { background: var(--mauve); color: var(--white); }
 .box--contact { background: var(--brown); color: var(--white); }

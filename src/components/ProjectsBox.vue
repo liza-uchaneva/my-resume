@@ -1,5 +1,6 @@
 <template>
   <section ref="boxEl" class="box box--projects projects-box">
+    <h2 class="box-label projects-box__label">projects</h2>
     <p v-if="!expanded" class="projects-box__stack">
       I build web apps with <b>Vue</b>, <b>TypeScript</b>, and <b>JavaScript</b> on the
       front end, and <b>.NET</b> or <b>Ruby on Rails</b> on the back end.
@@ -115,6 +116,10 @@ function goToLast() {
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
+}
+
+.projects-box__label {
+  margin-bottom: -1.25rem; // sits close to the line below, like "in short"
 }
 
 .projects-box__stack {
