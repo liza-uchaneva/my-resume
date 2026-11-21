@@ -1,6 +1,5 @@
 <template>
   <section ref="boxEl" class="box box--projects projects-box">
-    <h2 class="box-label projects-box__label">projects</h2>
     <p v-if="!expanded" class="projects-box__stack">
       I build web apps with <b>Vue</b>, <b>TypeScript</b>, and <b>JavaScript</b> on the
       front end, and <b>.NET</b> or <b>Ruby on Rails</b> on the back end.
@@ -22,13 +21,17 @@
         </a>
 
         <div v-if="expanded" class="project-details">
-          <ul class="project-tags">
-            <li v-for="t in p.tech" :key="t">{{ t }}</li>
-          </ul>
+          <h3 class="box-label project-title">{{ p.title }}</h3>
           <p class="project-desc">{{ p.description }}</p>
-          <div class="project-links">
-            <a :href="p.source" target="_blank" rel="noreferrer">source↗</a>
-            <a :href="p.demo" target="_blank" rel="noreferrer">demo↗</a>
+          <!-- Bottom line: technologies on the left, links on the right. -->
+          <div class="project-meta">
+            <ul class="project-tags">
+              <li v-for="t in p.tech" :key="t">{{ t }}</li>
+            </ul>
+            <div class="project-links">
+              <a :href="p.source" target="_blank" rel="noreferrer">source↗</a>
+              <a :href="p.demo" target="_blank" rel="noreferrer">demo↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -116,10 +119,6 @@ function goToLast() {
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
-}
-
-.projects-box__label {
-  margin-bottom: -1.25rem; // sits close to the line below, like "in short"
 }
 
 .projects-box__stack {
@@ -227,6 +226,7 @@ function goToLast() {
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  width: 100%;
   max-width: 28rem;
   animation: details-in 0.45s ease 0.35s both;
 }
@@ -257,7 +257,26 @@ function goToLast() {
   line-height: 1.5;
 }
 
+.project-title {
+  margin-bottom: -0.5rem; // sits close to its description
+}
+
+// Tags take the free space and wrap inside it; links stay on the right, on
+// the same line as the last row of tags.
+.project-meta {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+
+  .project-tags {
+    flex: 1;
+  }
+}
+
 .project-links {
+  flex-shrink: 0;
   display: flex;
   gap: 0.75rem;
 
