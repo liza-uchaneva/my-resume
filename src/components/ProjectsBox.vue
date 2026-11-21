@@ -52,7 +52,7 @@
       </button>
     </div>
 
-    <ProjectControls v-if="expanded" ref="controls" @less="collapse" @first="goTo('first')" @last="goTo('last')" />
+    <ProjectControls v-if="expanded" ref="controls" @less="collapse" @last="goToLast" />
   </section>
 </template>
 
@@ -101,10 +101,9 @@ function collapse() {
   });
 }
 
-function goTo(which) {
+function goToLast() {
   const rows = boxEl.value?.querySelectorAll("[data-project-row]") ?? [];
-  const row = which === "first" ? rows[0] : rows[rows.length - 1];
-  row?.scrollIntoView({ block: "center", behavior: scrollBehavior() });
+  rows[rows.length - 1]?.scrollIntoView({ block: "center", behavior: scrollBehavior() });
 }
 </script>
 
@@ -186,6 +185,7 @@ function goTo(which) {
 
 // Expanded: one row per project, card on the left, details on the right.
 .cards--list {
+  padding-right: 8rem; // lane for the pinned "see less ↓" controls
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -203,6 +203,8 @@ function goTo(which) {
   }
 
   @include mq(md) {
+    padding-right: 0;
+
     .project-row {
       grid-template-columns: 1fr;
       justify-items: start;
