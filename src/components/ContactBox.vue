@@ -35,25 +35,25 @@
         aria-hidden="true"
       />
 
+      <!-- Each field keeps a fixed slot for its error, so the form doesn't jump when one appears. -->
       <div v-for="f in fields" :key="f.name" class="contact__field">
-        <component
-          :is="f.tag"
-          :id="`contact-${f.name}`"
+        <textarea
+          v-if="f.tag === 'textarea'"
           v-model="form[f.name]"
-          :type="f.type"
-          :name="f.name"
-          :rows="f.tag === 'textarea' ? 4 : undefined"
-          :placeholder="f.label"
-          :aria-label="f.label"
-          :autocomplete="f.autocomplete"
-          :maxlength="LIMITS[f.name]"
-          required
-          :aria-invalid="!!errors[f.name]"
-          :aria-describedby="errors[f.name] ? `contact-${f.name}-error` : undefined"
+          v-bind="fieldAttrs(f)"
+          rows="4"
           @blur="touch(f.name)"
-          @input="touched[f.name] && check()"
+          @input="onInput(f.name)"
+        ></textarea>
+        <input
+          v-else
+          v-model="form[f.name]"
+          v-bind="fieldAttrs(f)"
+          :type="f.type"
+          @blur="touch(f.name)"
+          @input="onInput(f.name)"
         />
-        <p v-if="errors[f.name]" :id="`contact-${f.name}-error`" class="contact__error">
+        <p :id="`contact-${f.name}-error`" class="contact__error" aria-live="polite">
           {{ errors[f.name] }}
         </p>
       </div>
@@ -62,11 +62,15 @@
         {{ status === "sending" ? "sending…" : "send" }}
       </button>
 
-      <p v-if="status === 'sent'" class="contact__status" role="status">
-        Thanks — your message is on its way. I’ll get back to you soon!
-      </p>
-      <p v-else-if="status === 'error'" class="contact__status contact__status--error" role="alert">
-        {{ sendError }}
+      <!-- Always rendered (space reserved) so the form doesn't grow when a note appears. -->
+      <p
+        class="contact__status"
+        :class="{ 'contact__status--error': status === 'error' }"
+        role="status"
+        aria-live="polite"
+      >
+        <template v-if="status === 'sent'">Thanks — your message is on its way. I’ll get back to you soon!</template>
+        <template v-else-if="status === 'error'">{{ sendError }}</template>
       </p>
     </form>
   </section>
@@ -89,6 +93,27 @@ const errors = ref({});
 const touched = reactive({}); // only show a field's error once it has been left or submitted
 const status = ref("idle"); // idle | sending | sent | error
 const sendError = ref("");
+
+function fieldAttrs(f) {
+  return {
+    id: `contact-${f.name}`,
+    name: f.name,
+    placeholder: f.label,
+    "aria-label": f.label,
+    autocomplete: f.autocomplete,
+    maxlength: LIMITS[f.name],
+    required: true,
+    "aria-invalid": !!errors.value[f.name],
+    "aria-describedby": `contact-${f.name}-error`,
+  };
+}
+
+// Re-check as the person types once a field has an error showing, so it clears
+// the moment the input is fixed. Also clear a stale "send failed" note.
+function onInput(name) {
+  if (status.value === "error" || status.value === "sent") status.value = "idle";
+  if (touched[name]) check();
+}
 
 function check() {
   const all = validate(form);
@@ -211,12 +236,14 @@ const cvUrl = `${import.meta.env.BASE_URL}Elizaveta-Uchaneva-resume.pdf`;
 .contact__field {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
 
   [aria-invalid="true"] { outline: 2px solid #E8A39A; }
 }
 
 .contact__error {
+  min-height: 1.3em; // reserved even when empty, so errors don't resize the form
+  line-height: 1.3;
   padding-left: 1.25rem;
   font-size: 0.85rem;
   color: #F2B8AF; // soft coral, readable on brown
@@ -232,6 +259,7 @@ const cvUrl = `${import.meta.env.BASE_URL}Elizaveta-Uchaneva-resume.pdf`;
 }
 
 .contact__status {
+  min-height: 1.5em;
   text-align: center;
   font-size: 0.95rem;
   color: var(--gold);
