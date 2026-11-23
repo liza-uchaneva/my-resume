@@ -70,7 +70,7 @@ import SocialIcon from "./SocialIcon.vue";
   row-gap: 1.5rem;
 
   // Phones: unwrap so the photo, text, links and email can be ordered as one
-  // column: photo, "Hi!" + intro, links, email.
+  // column: photo, links, email, then "Hi!" + intro.
   @include mq(md) {
     display: contents;
   }
@@ -90,7 +90,7 @@ import SocialIcon from "./SocialIcon.vue";
   @include mq(md) {
     grid-area: auto;
     justify-self: center;
-    order: 1;
+    order: -2;
     flex-direction: row;
     justify-content: center;
     gap: 1.75rem;
@@ -127,7 +127,7 @@ import SocialIcon from "./SocialIcon.vue";
   @include mq(md) {
     grid-area: auto;
     justify-self: center;
-    order: -1;
+    order: -3;
     width: min(70%, 14rem);
     margin: 0;
   }
@@ -141,7 +141,7 @@ import SocialIcon from "./SocialIcon.vue";
   @include mq(md) {
     grid-area: auto;
     justify-self: center;
-    order: 2;
+    order: -1;
     margin-top: -1rem; // keep it close to the icons above
   }
 }
