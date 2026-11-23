@@ -7,3 +7,7 @@ export default [
 ];
 
 export const email = "liza.uchaneva@outlook.com";
+
+// Web3Forms access key for the contact form (get one free at https://web3forms.com).
+// It is safe to keep in public code: it can only send messages to the owner's inbox.
+export const web3formsKey = "d58659fa-e2ce-470d-8f16-bb6eb8785b6d";
